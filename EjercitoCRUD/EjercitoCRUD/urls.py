@@ -1,0 +1,39 @@
+"""EjercitoCRUD URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.11/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url, include
+
+from django.contrib import admin
+from . import views 
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.index, name='index'),
+    url('nuevasincorporaciones/', views.ListarNuevasIncorporaciones, name="ListarNuevasIncorporaciones"),
+    url('hombrescaidos/', views.ListarHombresCaidos, name="ListarHombresCaidos"),
+    url('hombresheridos/', views.ListarHombresHeridos, name="ListarHombresHeridos"),
+    url('armastomadas/', views.ListarArmasTomadas, name="ListarArmasTomadas"),    
+    url('registrosoldado/', views.RegistroSoldado, name="RegistroSoldado"),    
+    url('tomadearma/', views.TomaDeArma, name="TomaDeArma"),    
+    url('novedades/', views.Novedades, name="Novedades"),    
+
+    
+]
+
+#Add Django site authentication urls (for login, logout, password management)
+
+urlpatterns += [
+    url('accounts/', include('django.contrib.auth.urls')),
+]
